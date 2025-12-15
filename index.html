@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI + Ai/愛 – Wenn Technologie auf Liebe trifft</title>
+    <meta name="description" content="Menschsein und Maschine smart verbinden. Eine digitale Insel für alle, die strugglen – und trotzdem einen geilen Ritt daraus machen wollen.">
+    
+    <style>
+        /* aiai.energy Design System */
+        :root {
+            --color-primary: #000000;
+            --color-secondary: #666666;
+            --color-light: #f8f8f8;
+            --color-white: #ffffff;
+            --color-accent: #2c2c2c;
+            --color-hover: #9b59b6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Typography */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--color-secondary);
+            line-height: 1.6;
+            font-size: 16px;
+            background: var(--color-white);
+        }
+
+        /* Logo-Click leads to start of page */
+        .logo-link {
+            display: block;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--color-primary);
+        }
+
+        .logo-link:hover {
+            color: var(--color-hover);
+            transition: color 0.2s ease;
+        }
+        
+        /* Headings */
+        h1 {
+            font-size: clamp(2rem, 6.4vw, 3.6rem);
+            font-weight: 300;
+            line-height: 1.2;
+            color: var(--color-primary);
+            letter-spacing: -0.02em;
+        }
+        
+        h2 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 300;
+            line-height: 1.2;
+            color: var(--color-primary);
+            letter-spacing: -0.01em;
+        }
+        
+        h3 {
+            font-size: clamp(1.25rem, 4vw, 1.5rem);
+            font-weight: 400;
+            color: var(--color-primary);
+            line-height: 1.3;
+        }
+        
+        h4 {
+            font-size: 1.125rem;
+            font-weight: 400;
+            color: var(--color-primary);
+            line-height: 1.4;
+        }
+        
+        p {
+            font-size: 1rem;
+            color: var(--color-secondary);
+            line-height: 1.6;
+        }
+        
+        .text-large {
+            font-size: clamp(1.125rem, 3vw, 1.25rem);
+            line-height: 1.5;
+        }
+
+        /* Link-Styling für Fließtext */
+        .text-large a {
+            color: var(--color-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .text-large a:hover {
+            color: var(--color-hover);
+            text-decoration: underline;
+        }
+        
+        .text-small {
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+        
+        /* Header/Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--color-white);
+            border-bottom: 1px solid #e5e5e5;
+            padding: 1rem 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-logo {
+            font-size: 1.5rem;
+        }
+        
+        .header-nav a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .header-nav a:hover {
+            color: var(--color-hover);
+        }
+        
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .container-small {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Spacing */
+        .spacer-small { height: 1rem; }
+        .spacer-medium { height: 2rem; }
+        .spacer-large { height: 4rem; }
+        .spacer-xlarge { height: 6rem; }
+        .spacer-xxlarge { height: 8rem; }
+        
+        .padding-section-small { padding: 4rem 0; }
+        .padding-section-medium { padding: 6rem 0; }
+        .padding-section-large { padding: 8rem 0; }
+        
+        /* Grid */
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+        .grid-4 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+        
+        @media (max-width: 768px) {
+            .grid { gap: 1.5rem; }
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            font-size: 0.875rem;
+            font-weight: 400;
+            text-decoration: none;
+            border: 1px solid var(--color-primary);
+            background: transparent;
+            color: var(--color-primary);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-radius: 0;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background: var(--color-hover);
+            color: var(--color-white);
+            border-color: var(--color-hover);
+        }
+        
+        .btn-primary {
+            background: var(--color-primary);
+            color: var(--color-white);
+            border: 1px solid var(--color-primary);
+        }
+        
+        .btn-primary:hover {
+            background: var(--color-hover);
+            border-color: var(--color-hover);
+        }
+        
+        .btn-large {
+            padding: 1.125rem 2.5rem;
+            font-size: 1rem;
+        }
+        
+        /* Cards */
+        .card {
+            background: var(--color-white);
+            border: 1px solid #e5e5e5;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: var(--color-hover);
+        }
+        
+        .card-body {
+            padding: 0;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 100px;
+            background: var(--color-white);
+            position: relative;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .hero-text {
+            text-align: left;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 500px;
+            border-radius: 8px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #9b59b6 0%, #e74c3c 50%, #f39c12 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-image-text {
+            font-size: 8rem;
+            text-align: center;
+            line-height: 1;
+        }
+        
+        .hero-subtitle {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .hero-buttons {
+            margin-top: 3rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Em-Text in Hero Section */
+        .hero em {
+            color: var(--color-hover);
+            font-style: italic;
+        }
+        
+        /* Sections */
+        .section {
+            position: relative;
+        }
+        
+        .section-light {
+            background: var(--color-light);
+        }
+        
+        .section-dark {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+        
+        .section-dark h1,
+        .section-dark h2,
+        .section-dark h3,
+        .section-dark h4 {
+            color: var(--color-white);
+        }
+        
+        .section-dark p {
+            color: #cccccc;
+        }
+        
+        .section-dark .btn {
+            border-color: var(--color-white);
+            color: var(--color-white);
+        }
+        
+        .section-dark .btn:hover {
+            background: var(--color-hover);
+            border-color: var(--color-hover);
+        }
+
+        /* Highlight */
+        .highlight {
+            color: var(--color-hover);
+            font-weight: 400;
+        }
+        
+        /* Problem Cards */
+        .problem-card {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+        }
+        
+        .problem-icon {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Trust Icons */
+        .trust-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Package Cards */
+        .package-card {
+            position: relative;
+            text-align: left;
+            padding: 2.5rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .package-featured {
+            border: 2px solid var(--color-primary);
+            position: relative;
+        }
+        
+        .package-featured::before {
+            content: "HERZSTÜCK";
+            position: absolute;
+            top: -1px;
+            right: -1px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+
+        /* Beliebt Label */
+        .package-popular {
+            border: 2px solid var(--color-hover);
+            position: relative;
+        }
+        
+        .package-popular::before {
+            content: "FÜR MACHER:INNEN";
+            position: absolute;
+            top: -1px;
+            right: -1px;
+            background: var(--color-hover);
+            color: var(--color-white);
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+        
+        .package-price {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--color-primary);
+            line-height: 1;
+            margin: 0.5rem 0;
+        }
+        
+        .package-period {
+            font-size: 0.875rem;
+            color: var(--color-secondary);
+            margin-bottom: 2rem;
+        }
+        
+        .package-features {
+            list-style: none;
+            margin: 2rem 0;
+            flex-grow: 1;
+        }
+        
+        .package-features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.9rem;
+        }
+        
+        .package-features li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+        }
+        
+        .package-cta {
+            margin-top: auto;
+        }
+        
+        /* Testimonial Cards */
+        .testimonial-card {
+            padding: 2rem;
+            text-align: left;
+            background: var(--color-white);
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            height: 100%;
+        }
+        
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            overflow: hidden;
+            background: var(--color-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .testimonial-content {
+            flex: 1;
+        }
+        
+        .testimonial-quote {
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author {
+            font-weight: 500;
+            color: var(--color-primary);
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--color-light);
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: var(--color-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--color-hover);
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .footer-social a {
+            width: 2.5rem;
+            height: 2.5rem;
+            border: 1px solid var(--color-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+        
+        .footer-social a:hover {
+            border-color: var(--color-hover);
+            color: var(--color-hover);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #e5e5e5;
+            font-size: 0.875rem;
+            color: var(--color-secondary);
+        }
+
+        .footer-bottom a {
+            color: var(--color-secondary);
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--color-hover);
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .container,
+            .container-small {
+                padding: 0 1rem;
+            }
+            
+            .header-container {
+                padding: 0 1rem;
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+            
+            .hero-text {
+                text-align: center;
+            }
+            
+            .hero-image {
+                height: 300px;
+            }
+
+            .hero-image-text {
+                font-size: 5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .package-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .footer-grid {
+                gap: 2rem;
+                text-align: center;
+            }
+            
+            .testimonial-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .testimonial-avatar {
+                align-self: center;
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Quote Block */
+        .quote-block {
+            border-left: 3px solid var(--color-hover);
+            padding-left: 2rem;
+            margin: 2rem 0;
+            font-style: italic;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="header-logo">
+                <a href="#top" class="logo-link">🤖💜 aiai.energy</a>
+            </div>
+            <nav class="header-nav">
+                <a href="https://karinhufnagl.com/kennenlerngespraech-buchen/" target="_blank">👋 Let's talk</a>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="top">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-subtitle">AI + Ai/愛 – How to 🤖+💜?</div>
+                    <h1>
+                        Menschsein und wie eine Maschine funktionieren zu <em>einem geilen Ritt</em> machen.
+                    </h1>
+                    <div class="spacer-medium"></div>
+                    <p class="text-large">
+                        Eine digitale Insel für alle, die strugglen. Schau kurz vorbei, verschnaufe, nimm dir eine Kokosnuss mit – und weiter geht's. You are not made for the harbor. Let's get these waves.
+                    </p>
+                    
+                    <div class="hero-buttons">
+                        <a href="https://karinhufnagl.com/kennenlerngespraech-buchen/" target="_blank" class="btn btn-primary btn-large">
+                            Kennenlerngespräch buchen
+                        </a>
+                        <a href="#about" class="btn btn-large">
+                            Mehr erfahren
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-image-text">🦊</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="section section-dark padding-section-large" id="about">
+        <div class="container text-center">
+            <h2>Wenn du einen Körper hast, hast du schon gewonnen.</h2>
+            <div class="spacer-medium"></div>
+            <p class="text-large">Das ist das wichtigste Asset für das kommende Jahrhundert. FACEbook war gestern. Heute und in Zukunft ist der ganze Körper Trumpf. Take care.</p>
+            
+            <div class="spacer-xlarge"></div>
+            
+            <div class="grid grid-3">
+                <div class="fade-in">
+                    <div class="trust-icon">🧠</div>
+                    <h3>Ich denke, also bin ich.</h3>
+                    <div class="spacer-small"></div>
+                    <p>Ja, unser Gehirn ist ein Wunderwerk, das Wunderschönes kreiert. Und: Cogito ergo sum ist schon lange klar, dass das zu einseitig ist. Nicht wahr.</p>
+                </div>
+                
+                <div class="fade-in">
+                    <div class="trust-icon">👁️</div>
+                    <h3>Ich spüre, also bin ich.</h3>
+                    <div class="spacer-small"></div>
+                    <p>Ich habe einen Körper und kann über meine sechs Sinne mich und die Welt erfahren. Ich spüre und fühle mich und andere – bin verbunden – also bin ich.</p>
+                </div>
+                
+                <div class="fade-in">
+                    <div class="trust-icon">💜</div>
+                    <h3>Ich liebe, also bin ich.</h3>
+                    <div class="spacer-small"></div>
+                    <p>Interessant: Das japanische „Ai" (愛) bedeutet „Liebe" – reine, universelle Liebe. So verbindet sich Menschliches mit Artificial Intelligence auf faszinierende Weise.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section section-light padding-section-large">
+        <div class="container">
+            <div class="text-center">
+                <h2>Menschen haben Angst vor AI – und übersehen die gefährlichste Maschine.</h2>
+                <div class="spacer-medium"></div>
+                <p class="text-large">An vielen Fronten ist zu viel Angst, Gier, konzentrierte Macht und Nebel im Spiel.</p>
+            </div>
+            
+            <div class="spacer-xlarge"></div>
+            
+            <div class="grid grid-3">
+                <div class="card problem-card fade-in">
+                    <div class="problem-icon">🔥</div>
+                    <h3>Gehirne, die durchbrennen</h3>
+                    <p>Menschliche Gehirne, die überhitzen. Die zu viel wollen. Die nicht mehr abschalten können. Das ist keine KI-Gefahr – das ist menschlich.</p>
+                </div>
+                
+                <div class="card problem-card fade-in">
+                    <div class="problem-icon">🔌</div>
+                    <h3>Gehirne, die unverbunden agieren</h3>
+                    <p>Menschliche Gehirne, die ohne Körper, ohne Gefühl, ohne Verbindung entscheiden. Kopf ohne Herz. Das ist die eigentliche Gefahr.</p>
+                </div>
+                
+                <div class="card problem-card fade-in">
+                    <div class="problem-icon">🧮</div>
+                    <h3>Gehirne, die nur berechnen</h3>
+                    <p>Menschliche Gehirne, die berechnend sind – im schlechten Sinne. Profit vor Menschen. Effizienz vor Menschlichkeit. Das müssen wir adressieren.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="section padding-section-large" id="packages">
+        <div class="container">
+            <div class="text-center">
+                <h2>Diese mächtigen Kräfte können wir nur gemeinsam reiten. 🐎</h2>
+                <div class="spacer-medium"></div>
+                <p class="text-large">Datengetriebene Prozessoptimierung und authentische, emotionale Verbindung – beides kann sich ergänzen, muss nicht konkurrieren.</p>
+            </div>
+            
+            <div class="spacer-xlarge"></div>
+            
+            <!-- Main Packages -->
+            <div class="grid grid-3">
+                <div class="card package-card fade-in">
+                    <h3>Kurz vorbeischauen</h3>
+                    <div class="package-price">Gratis</div>
+                    <div class="package-period">Digitale Insel-Momente</div>
+                    
+                    <ul class="package-features">
+                        <li>Verschnaufen</li>
+                        <li>Kokosnuss mitnehmen</li>
+                        <li>Ein bisschen Kacke dalassen als Fertilizer</li>
+                        <li>Und weiter geht's auf See</li>
+                    </ul>
+                    
+                    <div class="package-cta">
+                        <a href="https://good.at/good-at-ki-lumne-karin-hufnagl" target="_blank" class="btn btn-primary" style="width: 100%;">KI-Lumne lesen</a>
+                    </div>
+                </div>
+
+                <div class="card package-card package-featured fade-in">
+                    <h3>Design + Marketing</h3>
+                    <div class="package-price">Done-for-you</div>
+                    <div class="package-period">Für Körpertherapeut:innen & Co.</div>
+                    
+                    <ul class="package-features">
+                        <li>Für Menschen, die den Körper als wichtiges Instrument erachten</li>
+                        <li>Technisches & Digitales mit persönlicher Note</li>
+                        <li>Brücke für alle, denen das Digitale noch fremd ist</li>
+                        <li>Zuhören und Raumgeben</li>
+                        <li>Nicht aufblasen – in voller Kleinheit. 1.60.</li>
+                    </ul>
+                    
+                    <div class="package-cta">
+                        <a href="https://karinhufnagl.com/kennenlerngespraech-buchen/" target="_blank" class="btn btn-primary" style="width: 100%;">Gespräch buchen</a>
+                    </div>
+                </div>
+
+                <div class="card package-card package-popular fade-in"> 
+                    <h3>AI + Ai/愛 Forschung</h3>
+                    <div class="package-price">7-Jahres-Reise</div>
+                    <div class="package-period">Jahr 1 von 7 läuft</div>
+                    
+                    <ul class="package-features">
+                        <li>How to 🤖+💜?</li>
+                        <li>Simpel im Ausdruck, komplex in der Thematik</li>
+                        <li>AI + Ai/愛 parallel weiterentwickeln</li>
+                        <li>SDGs : IDGs = AI : Ai/愛</li>
+                        <li>Gemeinsam aus dem Momentum heraus Zukunft gestalten</li>
+                    </ul>
+                    
+                    <div class="package-cta">
+                        <a href="https://www.instagram.com/kahu_branding_webdesign/" target="_blank" class="btn btn-primary" style="width: 100%;">Auf Instagram folgen</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials / Principles Section -->
+    <section class="section section-light padding-section-large">
+        <div class="container">
+            <div class="text-center">
+                <h2>Vier Prinzipien für menschliches Sein</h2>
+                <div class="spacer-medium"></div>
+                <p class="text-large">Wie wir unsere menschlichen Werkzeuge und Fähigkeiten nutzen, ist der Nährboden für alles.</p>
+            </div>
+            
+            <div class="spacer-xlarge"></div>
+            
+            <div class="grid grid-2">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-avatar">🧠</div>
+                    <div class="testimonial-content">
+                        <p class="testimonial-quote">«Ich nutze meinen gesunden Menschenverstand (österr. Hausverstand) und zahlreiche Werkzeuge, also bin ich.»</p>
+                        <div class="testimonial-author">— Prinzip 1</div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-avatar">👁️</div>
+                    <div class="testimonial-content">
+                        <p class="testimonial-quote">«Ich habe einen Körper und kann über meine sechs Sinne die Welt erfahren, also bin ich.»</p>
+                        <div class="testimonial-author">— Prinzip 2</div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-avatar">🤝</div>
+                    <div class="testimonial-content">
+                        <p class="testimonial-quote">«Ich bin verbunden, also bin ich. Wir sind gemeinsam unterwegs – das macht's so viel einfacher und schöner.»</p>
+                        <div class="testimonial-author">— Prinzip 3</div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-avatar">🍽️</div>
+                    <div class="testimonial-content">
+                        <p class="testimonial-quote">«Ich esse und trinke, also bin ich. Von Luft und Liebe kann niemand leben. Ohne auch nicht.»</p>
+                        <div class="testimonial-author">— Prinzip 4</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section section-dark padding-section-large" id="contact">
+        <div class="container text-center">
+            <h2>Wenn du dich manchmal alleine fühlst – mit dem Laptop, den KI-News, Siri & Copilot.</h2>
+            <div class="spacer-medium"></div>
+            <p class="text-large">
+                Und wenn dir aus dem Nichts ein beherztes «Ach, ich liebe meinen Job!» entwischt und du die Logik dahinter verstehen möchtest – dann lass uns reden.
+            </p>
+            
+            <div class="spacer-large"></div>
+            
+            <a href="https://karinhufnagl.com/kennenlerngespraech-buchen/" target="_blank" class="btn btn-primary btn-large">
+                Kennenlerngespräch buchen
+            </a>
+            
+            <div class="spacer-medium"></div>
+            <p class="text-small">
+                Ich versuche gerade, Mensch ohne Handy zu sein – wahrscheinlich bin ich am Essen, Gestalten, Denken, Verdauen oder irgendwo in den Appenzeller Hügeln mit Menschen und Tieren unterwegs.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4>aiai.energy</h4>
+                    <div class="spacer-small"></div>
+                    <p class="text-small">AI + Ai/愛 – Wenn Technologie auf emotionale Intelligenz trifft.<br>
+                        Eine digitale Insel für alle, die Menschsein und Maschine smart verbinden wollen.
+                    </p>
+                </div>
+                <div>
+                    <ul class="footer-links">
+                        <li><a href="https://gestaltungplus.ai/" target="_blank">gestaltungplus.ai</a></li>
+                        <li><a href="https://karinhufnagl.com/datenschutz/" target="_blank">Datenschutz</a></li>
+                        <li><a href="https://karinhufnagl.com/impressum/" target="_blank">Impressum</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="footer-social">
+                        <a href="https://www.linkedin.com/in/karinhufnagl/" target="_blank" title="LinkedIn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/kahu_branding_webdesign/" target="_blank" title="Instagram">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/message/6TC2RUVNO2K4I1" target="_blank" title="WhatsApp">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>©2025 aiai.energy. Made with 🤖+💜. Made with <a href="https://karinhufnagl.com/ai-letter/" target="_blank">AI+Ai/愛</a>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Simple scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
